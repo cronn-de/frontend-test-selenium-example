@@ -10,28 +10,17 @@ jobs:
 
     strategy:
       matrix:
-        # os: [ubuntu-latest, macos-latest, windows-latest]
-        # browser: [firefox, chrome]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        browser: [firefox, chrome]
         include:
-          # - os: macos-latest
-          #   browser: safari
+          - os: macos-latest
+            browser: safari
           - os: windows-latest
             browser: MicrosoftEdge
 
     runs-on: ${{ matrix.os }}
 
     steps:
-      # - id: environment
-      #   name: Add Edge WebDriver to Path
-      #   if: ${{ matrix.browser == 'MicrosoftEdge' }}
-      #   run: echo "::add-path::$EdgeWebDriver"
-      #   shell: bash
-      # - name: Print Path
-      #   run: |
-      #     echo $EdgeWebDriver
-      #     ls $EdgeWebDriver
-      #     echo $PATH
-      #   shell: bash
       - id: checkout
         name: Clone Git Repository
         uses: actions/checkout@v2
@@ -41,6 +30,5 @@ jobs:
       - id: test
         name: Run Tests
         run: npm run test
-        # shell: bash
         env:
           SELENIUM_BROWSER: ${{ matrix.browser }}
