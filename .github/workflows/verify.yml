@@ -10,11 +10,11 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        browser: [firefox, chrome]
+        # os: [ubuntu-latest, macos-latest, windows-latest]
+        # browser: [firefox, chrome]
         include:
-          - os: macos-latest
-            browser: safari
+          # - os: macos-latest
+          #   browser: safari
           - os: windows-latest
             browser: MicrosoftEdge
 
@@ -25,6 +25,11 @@ jobs:
         name: Add Edge WebDriver to Path
         if: ${{ matrix.browser == 'MicrosoftEdge' }}
         run: echo "::add-path::$EdgeWebDriver"
+        shell: bash
+      - name: Print Path
+        run:
+          - echo $EdgeWebDriver
+          - echo $PATH
         shell: bash
       - id: checkout
         name: Clone Git Repository
