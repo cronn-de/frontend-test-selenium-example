@@ -29,6 +29,7 @@ jobs:
       - name: Print Path
         run: |
           echo $EdgeWebDriver
+          ls $EdgeWebDriver
           echo $PATH
         shell: bash
       - id: checkout
@@ -40,5 +41,6 @@ jobs:
       - id: test
         name: Run Tests
         run: npm run test
+        shell: bash
         env:
           SELENIUM_BROWSER: ${{ matrix.browser }}
