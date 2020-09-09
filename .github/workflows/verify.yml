@@ -16,16 +16,16 @@ jobs:
           # - os: macos-latest
           #   browser: safari
           - os: windows-latest
-            browser: MicrosoftEdge
+            browser: msedge
 
     runs-on: ${{ matrix.os }}
 
     steps:
-      - id: environment
-        name: Add Edge WebDriver to Path
-        if: ${{ matrix.browser == 'MicrosoftEdge' }}
-        run: echo "::add-path::$EdgeWebDriver"
-        shell: bash
+      # - id: environment
+      #   name: Add Edge WebDriver to Path
+      #   if: ${{ matrix.browser == 'MicrosoftEdge' }}
+      #   run: echo "::add-path::$EdgeWebDriver"
+      #   shell: bash
       - name: Print Path
         run: |
           echo $EdgeWebDriver
@@ -41,6 +41,6 @@ jobs:
       - id: test
         name: Run Tests
         run: npm run test
-        shell: bash
+        # shell: bash
         env:
           SELENIUM_BROWSER: ${{ matrix.browser }}
