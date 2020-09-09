@@ -21,13 +21,17 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+      - id: environment
+        name: Add Edge WebDriver to Path
+        if: ${{ matrix.browser == 'MicrosoftEdge' }}
+        run: echo "::add-path::$EdgeWebDriver"
       - id: checkout
         name: Clone Git Repository
         uses: actions/checkout@v2
       - id: install
         name: Install Dependencies
         run: npm install
-      - id: chrome
+      - id: test
         name: Run Tests
         run: npm run test
         env:
