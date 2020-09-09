@@ -27,9 +27,9 @@ jobs:
         run: echo "::add-path::$EdgeWebDriver"
         shell: bash
       - name: Print Path
-        run:
-          - echo $EdgeWebDriver
-          - echo $PATH
+        run: |
+          echo $EdgeWebDriver
+          echo $PATH
         shell: bash
       - id: checkout
         name: Clone Git Repository
