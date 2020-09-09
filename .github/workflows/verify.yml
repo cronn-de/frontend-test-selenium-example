@@ -25,6 +25,7 @@ jobs:
         name: Add Edge WebDriver to Path
         if: ${{ matrix.browser == 'MicrosoftEdge' }}
         run: echo "::add-path::$EdgeWebDriver"
+        shell: bash
       - id: checkout
         name: Clone Git Repository
         uses: actions/checkout@v2
