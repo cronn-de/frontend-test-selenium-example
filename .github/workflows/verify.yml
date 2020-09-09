@@ -16,7 +16,7 @@ jobs:
           # - os: macos-latest
           #   browser: safari
           - os: windows-latest
-            browser: msedge
+            browser: MicrosoftEdge
 
     runs-on: ${{ matrix.os }}
 
@@ -26,12 +26,12 @@ jobs:
       #   if: ${{ matrix.browser == 'MicrosoftEdge' }}
       #   run: echo "::add-path::$EdgeWebDriver"
       #   shell: bash
-      - name: Print Path
-        run: |
-          echo $EdgeWebDriver
-          ls $EdgeWebDriver
-          echo $PATH
-        shell: bash
+      # - name: Print Path
+      #   run: |
+      #     echo $EdgeWebDriver
+      #     ls $EdgeWebDriver
+      #     echo $PATH
+      #   shell: bash
       - id: checkout
         name: Clone Git Repository
         uses: actions/checkout@v2
